@@ -13,6 +13,7 @@ class Item(BaseModel):
 
 @app.get("/")
 def index():
+    response_payload = 'nothing'
     try:
         acct_id = 576202454
         lambda_region = "us-west-2"
@@ -33,7 +34,7 @@ def index():
         print(f"get license capabilities response {response_payload} for acct_id = {acct_id}")
     except Exception as ex:
         print(f"ex = {str(ex)}")
-    return {"title" : "Hello coder follower, please like this video!" , "error" : str(ex)}
+    return {"title" : "Hello coder follower, please like this video!" , "response": response_payload }
 
 @app.post("/items/")
 async def create_item(item: Item):
